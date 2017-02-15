@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="en">
+<style>
+#players {
+	font-size:15pt;
+	font:Arial;
+	resize:none;
+}
+
+#yearList, #fantasyOptions, #compare {
+	position:absolute;
+	font-size:15pt;
+	font:Arial;	
+	height:30px;
+}
+
+#fCalc {
+	position:absolute;
+	font-size:15pt;
+	font:Arial;
+	top:400px;
+}
+
+#p1, #p2 {
+	position:absolute;
+	font-size:20pt;
+	font:Arial;
+	top:330px;
+	display:none;
+}
+
+#stats {
+	position:absolute;
+	top:450px;
+}
+</style>
+<head>
+  <meta charset="utf-8">
+
+  <title>Sam's NFL Database</title>
+  <meta name="Sam Nayerman">
+
+</head>
+
+<body>
+
+	<button id="compare" type="button" style='display:block' onclick='addCompare()'>Compare</button>
+	<textarea class="textbox" id='players' placeholder='Enter player name' rows=1 onkeydown='showPlayerStats(event)' readonly></textarea>
+	
+	<select id='yearList' onChange='updateYear();'>
+	<option value='2015'>2015</option>
+	<option value='2014'>2014</option>
+	<option value='2013'>2013</option>
+	<option value='2012'>2012</option>
+	<option value='2011'>2011</option>
+	<option value='2010'>2010</option>
+	<option value='2009'>2009</option>
+	</select>
+	
+	<script>
+	console.log
+	var list = document.getElementById('yearList');
+	var cButton = document.getElementById('compare');
+	list.style.height = document.getElementById('players').offsetHeight+"px";
+	cButton.style.height = list.style.height;
+	cButton.style.top = list.style.top;
+	cButton.style.left = list.offsetLeft+list.offsetWidth+100+"px";
+	</script>
+
+	<iframe id='f1' src='http://samsfantasytools.x10host.com/2015stats.txt' onload='main()' style='display:none'></iframe>
+	
+	<select id='fantasyOptions' style='display:none'>
+	<option value='standard'>Standard</option>
+	<option value='halfppr'>0.5PPR</option>
+	<option value='fullppr'>PPR</option>
+	</select>
+	
+	<p id='p1'>~ Fantasy Stats ~</p>
+	<p id='p2'>___________________</p>
+	<button id="fCalc" type="button" style='display:none' onclick='getFantasyType(1)'>Calculate</button>
+	
+	<script src="parse.js"></script>
+</body>
+</html>

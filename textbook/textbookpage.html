@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+<style>
+
+#input {
+	font-size:12pt;
+	font:Arial;
+	resize:none;
+	position:absolute;
+}
+
+#search, #entries {
+	position:absolute;
+	overflow-x:auto;
+	overflow-y:auto;
+}
+
+</style>
+<head>
+  <meta charset="utf-8">
+
+  <title>Sam's Textbook Aggregating Service</title>
+  <meta name="Sam Nayerman">
+
+</head>
+
+<body>
+	
+	<textarea id="input" placeholder="Enter Title, Author, or ISBN..." rows=1 cols=30 spellcheck="false"></textarea>
+	<button id="search" type="button" style='display:block' onclick='searchTitle()'>Search</button>
+	<div id="entries" style='display:none; border-style:solid; border-width:1px;' overflow='auto'></div>
+	
+	<script>
+		input = document.getElementById("input");
+		search = document.getElementById("search");
+		entries = document.getElementById("entries");
+		
+		search.style.left = 2*input.offsetLeft+input.clientWidth+"px";
+		search.style.height = input.offsetHeight+"px";
+		
+		entries.style.top = input.offsetTop+input.offsetHeight+"px";
+		entries.style.height = 10*input.offsetHeight+"px";
+		entries.style.width = input.clientWidth+"px";
+	</script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="search.js"></script>
+	
+</body>
+</html>
